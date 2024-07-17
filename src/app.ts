@@ -1,8 +1,12 @@
-import express from "express";
-import routes from "./routes";
+import express from 'express'
+import routes from './routes'
+import MongoService from './repositories/mongodb/MongoService'
 
-const app = express();
+const app = express()
 
-app.use(routes);
+MongoService.connectDB()
 
-export { app };
+app.use(express.json())
+app.use(routes)
+
+export { app }
